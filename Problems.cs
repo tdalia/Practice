@@ -270,5 +270,132 @@ namespace LeetConsoleApp
             return listNode;
         }
 
+        /**
+         * https://leetcode.com/contest/weekly-contest-181/problems/create-target-array-in-the-given-order/
+         * 
+         * Given two arrays of integers nums and index. Your task is to create target array under the following rules:
+         * 
+         * Initially target array is empty.
+         *  From left to right read nums[i] and index[i], insert at index index[i] the value nums[i] in target array.
+         *  Repeat the previous step until there are no elements to read in nums and index.
+         *  Return the target array.
+         * 
+         * 
+         * Input: nums = [1,2,3,4,0], index = [0,1,2,3,0]
+         * Output: [0,1,2,3,4]
+         * Explanation:
+         * nums       index     target
+         *  1            0        [1]
+         *  2            1        [1,2]
+         *  3            2        [1,2,3]
+         *  4            3        [1,2,3,4]
+         *  0            0        [0,1,2,3,4]
+         * 
+         * Constraints:
+         * 
+         *   1 <= nums.length, index.length <= 100
+         *   nums.length == index.length
+         *   0 <= nums[i] <= 100
+         *   0 <= index[i] <= i
+         */
+         public int[] CreateTargetArray(int[] nums, int[] index)
+         {
+            var arrayList = new List<int>();
+            for(int i=0; i < nums.Length; i++)
+            {
+                arrayList.Insert(index[i], nums[i]);
+            }
+
+            return arrayList.ToArray();
+         }
+
+        /*
+         * Remove Duplicates from Sorted Array
+         * https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+         * 
+         * Given a sorted array nums, remove the duplicates in-place such that
+         * each element appear only once and return the new length.
+         *
+         * Do not allocate extra space for another array, you must do this by 
+         * modifying the input array in-place with O(1) extra memory.
+         *
+         * Eg 1: Given nums = [1,1,2],
+         * Your function should return length = 2, with the first two elements 
+         * of nums being 1 and 2 respectively.
+         * 
+         * It doesn't matter what you leave beyond the returned length.
+         * 
+         * Eg 2: Given nums = [0,0,1,1,1,2,2,3,3,4],
+         * Your function should return length = 5, with the first five elements 
+         * of nums being modified to 0, 1, 2, 3, and 4 respectively.
+         */
+        public int RemoveDuplicatesFromSortedArray(int[] nums)
+        {
+            if (nums.Length == 0)
+                return 0;
+            int val = nums[0];
+            int prevIndex = 0;
+            for(int i=1; i < nums.Length; i++)
+            {
+                if (val != nums[i])
+                {
+                    val = nums[i];
+                    prevIndex++;
+                    nums[prevIndex] = val;
+                }
+            }
+            return 1+prevIndex;
+        }
+
+        /*
+         * Remove Duplicates from Sorted Array
+         * https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+         * 
+         * Given a sorted array nums, remove the duplicates in-place such that
+         * duplicates appeared at most twice and return the new length.
+         *
+         * Do not allocate extra space for another array, you must do this by 
+         * modifying the input array in-place with O(1) extra memory.
+         *
+         * Eg 1: Given nums = [1,1,1,2,2,3],
+         * Your function should return length = 5, with the first five elements 
+         * of nums being 1, 1, 2, 2 and 3 respectively.
+         * 
+         * It doesn't matter what you leave beyond the returned length.
+         * 
+         * Eg 2: Given nums = [0,0,1,1,1,1,2,3,3],
+         * Your function should return length = 7, with the first seven elements 
+         * of nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.
+         */
+        public int RemoveDuplicatesFromSortedArray_II(int[] nums)
+        {
+            if (nums.Length == 0)  return 0;
+
+            int length = 0, duplicates = 1, index = 0;
+
+            while (index < nums.Length)
+            {
+                if (index > 0 && nums[index] == nums[index - 1])
+                {
+                    if (duplicates == 2)
+                    {
+                        index++;
+                        continue;
+                    }
+                    else
+                    {
+                        nums[length] = nums[index];
+                        duplicates++;
+                    }
+                }
+                else
+                {
+                    nums[length] = nums[index];
+                    duplicates = 1;
+                }
+                index++; length++;
+            }
+            return length;
+        }
     }
 }

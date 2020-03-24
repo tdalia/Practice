@@ -136,6 +136,143 @@ namespace LeetConsoleApp
             return;
         }
 
+        [TestMethod]
+        [TestCategory("Easy")]
+        [TestCategory("Contest")]
+        public void TestCreateTargetArray()
+        {
+            int[] nums = { 0, 1, 2, 3, 4 };
+            int[] index = { 0, 1, 2, 2, 1 };
+
+            problems = Problems.getInstance();
+            Console.WriteLine("CreateTargetArray");
+            Stopwatch stopWatch = Stopwatch.StartNew();
+
+            int[] array = problems.CreateTargetArray(nums, index);
+
+            stopWatch.Stop();
+            Console.WriteLine("Time Elapsed : " + stopWatch.Elapsed);
+            stopWatch = null;
+
+            Console.WriteLine("Test 1 :");
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+            Console.WriteLine("index[]: [{0}]", string.Join(", ", index));
+            Console.WriteLine("Results: [{0}]", string.Join(", ", array));
+
+            Console.WriteLine("\nTest 2 :");
+            nums = new int[] { 1, 2, 3, 4, 0};
+            index = new int[] { 0, 1, 2, 3, 0};
+            array = problems.CreateTargetArray(nums, index);
+
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+            Console.WriteLine("index[]: [{0}]", string.Join(", ", index));
+            Console.WriteLine("Results: [{0}]", string.Join(", ", array));
+
+            Console.WriteLine("\nTest 3 :");
+            nums = new int[] { 1 };
+            index = new int[] { 0 };
+            array = problems.CreateTargetArray(nums, index);
+
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+            Console.WriteLine("index[]: [{0}]", string.Join(", ", index));
+            Console.WriteLine("Results: [{0}]", string.Join(", ", array));
+
+            this.ClearInstances();
+            return;
+        }
+
+        [TestMethod]
+        [TestCategory("Easy")]
+        [TestCategory("Contest")]
+        public void TestRemoveDuplicatesFromSortedArray()
+        {
+            int[] nums = { 1, 1, 2 };
+
+            problems = Problems.getInstance();
+            Console.WriteLine("Remove Duplicates From Sorted Array");
+            Console.WriteLine("Test 1 :");
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+
+            Stopwatch stopWatch = Stopwatch.StartNew();
+
+            int length = problems.RemoveDuplicatesFromSortedArray(nums);
+
+            stopWatch.Stop();
+            Console.WriteLine("Time Elapsed : " + stopWatch.Elapsed);
+            stopWatch = null;
+
+            Console.WriteLine("Length: [{0}]", length);
+            Console.WriteLine("Results: [{0}]", string.Join(", ", nums));
+            
+            Console.WriteLine("\nTest 2 :");
+            nums = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+
+            length = problems.RemoveDuplicatesFromSortedArray(nums);
+
+            Console.WriteLine("Length: [{0}]", length);
+            Console.WriteLine("Results: [{0}]", string.Join(", ", nums));
+            
+            Console.WriteLine("\nTest 3 :");
+            nums = new int[] { };
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+
+            length = problems.RemoveDuplicatesFromSortedArray(nums);
+
+            Console.WriteLine("Length: [{0}]", length);
+            Console.WriteLine("Results: [{0}]", string.Join(", ", nums));
+
+            this.ClearInstances();
+            return;
+        }
+
+        [TestMethod]
+        [TestCategory("Easy")]
+        [TestCategory("Contest")]
+        public void TestRemoveDuplicatesFromSortedArray_II()
+        {
+            int[] nums = { 1, 1, 1, 2, 2, 3 };
+
+            problems = Problems.getInstance();
+            Console.WriteLine("Remove Duplicates From Sorted Array");
+            Console.WriteLine("Test 1 :");
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+
+            Stopwatch stopWatch = Stopwatch.StartNew();
+
+            int length = problems.RemoveDuplicatesFromSortedArray_II(nums);
+
+            stopWatch.Stop();
+            Console.WriteLine("Time Elapsed : " + stopWatch.Elapsed);
+            stopWatch = null;
+
+            Console.WriteLine("Length: [{0}]", length);
+            Console.WriteLine("Results: [{0}]", string.Join(", ", nums));
+            
+            Console.WriteLine("\nTest 2 :");
+            nums = new int[] { 0, 0, 1, 1, 1, 1, 2, 3, 3 };
+
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+
+            length = problems.RemoveDuplicatesFromSortedArray_II(nums);
+
+            Console.WriteLine("Length: [{0}]", length);
+            Console.WriteLine("Results: [{0}]", string.Join(", ", nums));
+
+            Console.WriteLine("\nTest 3 :");
+            nums = new int[] { };
+            Console.WriteLine("nums[]: [{0}]", string.Join(", ", nums));
+
+            length = problems.RemoveDuplicatesFromSortedArray_II(nums);
+
+            Console.WriteLine("Length: [{0}]", length);
+            Console.WriteLine("Results: [{0}]", string.Join(", ", nums));
+            
+            this.ClearInstances();
+            return;
+        }
+
 
     }
 }

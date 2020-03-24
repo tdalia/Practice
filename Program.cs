@@ -16,9 +16,16 @@ namespace LeetConsoleApp
 
             //testCases.TestTwoSumIV();
 
-            testCases.AddTwoNumbers();
+            //testCases.AddTwoNumbers();
+
+            // CreateTargetArray
+            // testCases.TestCreateTargetArray();
+
+            // Remove Duplicates From Sorted Array
+            testCases.TestRemoveDuplicatesFromSortedArray_II();
 
             testCases = null;
+
             Console.ReadLine();
         }
     }
